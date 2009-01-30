@@ -1,13 +1,13 @@
 CC = g++
 
-CFLAGS = -g -O3 -Wall
-LDFLAGS = -g
+CFLAGS = -g -O3 -Wall `sdl-config --cflags`
+LDFLAGS = -g -lGL `sdl-config --libs`
 
 OBJDIR = bin
 SRCDIR = src
 BINDIR = bin
 
-OBJECTS = main.o
+OBJECTS = main.o display.o polygon.o
 OBJECTS_W_DIR = $(OBJECTS:%=$(OBJDIR)/%)
 
 all : yzzyx
