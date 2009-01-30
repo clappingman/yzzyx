@@ -8,16 +8,17 @@ SRCDIR = src
 BINDIR = bin
 
 OBJECTS = main.o
-OBJECTS_W_DIR = $(OBJECTS:%=$(OBJDIR))
+OBJECTS_W_DIR = $(OBJECTS:%=$(OBJDIR)/%)
 
 all : yzzyx
 
 $(OBJECTS) :
-	$(CC) $(CFLAGS) -c -o $(OBJDIR)/$@ $(SRCDIR)/$*
+	$(CC) $(CFLAGS) -c -o $(OBJDIR)/$@ $(SRCDIR)/$*.c
 
 yzzyx : $(OBJECTS)
-	$(CC) $(LDFLAGS) -o $(BINDIR)/$@ $<
+	$(CC) $(LDFLAGS) -o $(BINDIR)/$@ $(OBJECTS_W_DIR)
 
-.PHONY
+.PHONY : clean
 clean :
-	-rm $(OBJECTS_W_DIR) yzzyx
+	-rm $(OBJECTS_W_DIR) 
+	-rm $(BINDIR)/yzzyx
