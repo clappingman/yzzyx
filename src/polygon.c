@@ -4,11 +4,16 @@
 
 void polygon::display() {
     int i;
+    glPushMatrix();
+    glRotated(angle.x, 1, 0, 0);
+    glRotated(angle.y, 0, 1, 0);
+    glRotated(angle.z, 0, 0, 1);
     for (i = 0; i < vertex_count; i++) {
         glVertex3d(vertices[i].x, 
                    vertices[i].y,
                    vertices[i].z);
     }
+    glPopMatrix();
 }
 
 polygon::polygon(double *data, int n) {
