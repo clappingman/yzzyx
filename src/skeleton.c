@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "SDL_Opengl.h"
+#include "SDL_opengl.h"
 #include "skeleton.h"
 
 void skeleton::add_child(polygon *child, double x, double y, double z) {
